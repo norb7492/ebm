@@ -5,14 +5,14 @@ import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 
 const navigation = [
     { name: 'Dashboard', href: '/', current: true },
-    { name: 'Ponto de Venda', href: '#', current: false },
-    { name: 'Ordem de Serviço', href: '#', current: false },
-    { name: 'Produção', href: '#', current: false },
-    { name: 'Vendas', href: '#', current: false },
-    { name: 'Financeiro', href: '#', current: false },
-    { name: 'Clientes', href: '#', current: false },
-    { name: 'Fiscal', href: '#', current: false },
-    { name: 'Compras/Estoque', href: '#', current: false },
+    { name: 'Ponto de Venda', href: '/pdv', current: false },
+    { name: 'Ordem de Serviço', href: '/ordem-servicos', current: false },
+    { name: 'Produção', href: '/producao', current: false },
+    { name: 'Vendas', href: '/vendas', current: false },
+    { name: 'Financeiro', href: '/financeiro', current: false },
+    { name: 'Clientes', href: '/clientes', current: false },
+    { name: 'Fiscal', href: '/fiscal', current: false },
+    { name: 'Compras/Estoque', href: '/compras', current: false },
 ]
 
 function classNames(...classes: string[]) {
@@ -76,7 +76,7 @@ export default function Header() {
                                             <span className="sr-only">Open user menu</span>
                                             <img
                                                 className="h-8 w-8 rounded-full"
-                                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                                src="https://super.abril.com.br/wp-content/uploads/2016/12/steve_jobs_the_man_in_the_machine-860x450.jpg?quality=90&strip=info&w=690&h=450&crop=1"
                                                 alt=""
                                             />
                                         </Menu.Button>
