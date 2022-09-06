@@ -1,6 +1,6 @@
 export interface ProductType {
-    description: string;
-    price: number;
-    productName: string;
-    quantity: number;
-  }
+  description: string
+  price: number
+  productName: string
+  quantity: number
+}
