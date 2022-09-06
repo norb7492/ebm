@@ -1,32 +1,29 @@
-import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { db } from '../../firebase';
+import { getProducts } from './products.service';
+import { ProductType } from '../../types/product.type';
 
 export const Products = () => {
     const [productName, setProductName] = useState('');
     const [price, setPrice] = useState();
     const [quantity, setQuantity] = useState();
     const [description, setDescription] = useState('')
-    const [products, setProducts] = useState<any[]>([])
-    const productsCollectionRef = collection(db, 'products')
-
+    const [products, setProducts] = useState<ProductType[]>([])
 
     useEffect(() => {
-        const getProducts = async () => {
-            const data = await getDocs(productsCollectionRef)
+        const productsSubscription = getProducts().subscribe(products => setProducts(products));
 
-            setProducts((data.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))))
+        return () => productsSubscription.unsubscribe();
+    }, []);
 
-        };
-        getProducts();
-    }, [products])
     return (
         <>
             <div>
                 <ul>
-                    {products.map((product: any) => {
+                    {products.map((product: ProductType) => {
+                        let id = 1;
+                        id++;
                         return (
-                            <div key={product.id}>
+                            <div key={id}>
                                 <li>Produto:{product.productName}</li>
                                 <li>Valor: R${product.price}</li>
                                 <li>Em estoque:{product.quantity}</li>
