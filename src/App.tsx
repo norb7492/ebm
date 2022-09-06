@@ -9,6 +9,7 @@ import './App.css'
 import Header from './layout/header'
 import Footer from './layout/footer'
 import Dashboard from './components/Dashboard/Dashboard';
+import {Products} from './components/Products/Products';
 
 function App() {
   return (
@@ -17,9 +18,9 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Dashboard/>}/>
+          <Route path='/products' element={<Products/>}/>
           {/* <Route path='/clientes' element={<Customers/>} */}
         </Routes>
-
       </Router>
       <Footer />
     </section>
