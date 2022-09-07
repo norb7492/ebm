@@ -1,41 +1,38 @@
-import { collection, getDocs } from 'firebase/firestore';
-import { useEffect, useState } from 'react';
-import { db } from '../../firebase';
+import { useEffect, useState } from 'react'
+import { getProducts } from './products.service'
+import { ProductType } from '../../types/product.type'
 
 export const Products = () => {
-    const [productName, setProductName] = useState('');
-    const [price, setPrice] = useState();
-    const [quantity, setQuantity] = useState();
-    const [description, setDescription] = useState('')
-    const [products, setProducts] = useState<any[]>([])
-    const productsCollectionRef = collection(db, 'products')
+  const [productName, setProductName] = useState('')
+  const [price, setPrice] = useState()
+  const [quantity, setQuantity] = useState()
+  const [description, setDescription] = useState('')
+  const [products, setProducts] = useState<ProductType[]>([])
 
+  useEffect(() => {
+    const productsSubscription = getProducts().subscribe((products) => setProducts(products))
 
-    useEffect(() => {
-        const getProducts = async () => {
-            const data = await getDocs(productsCollectionRef)
+    return () => productsSubscription.unsubscribe()
+  }, [])
 
-            setProducts((data.docs.map((doc: any) => ({ ...doc.data(), id: doc.id }))))
-
-        };
-        getProducts();
-    }, [products])
-    return (
-        <>
-            <div>
-                <ul>
-                    {products.map((product: any) => {
-                        return (
-                            <div key={product.id}>
-                                <li>Produto:{product.productName}</li>
-                                <li>Valor: R${product.price}</li>
-                                <li>Em estoque:{product.quantity}</li>
-                                <li>Descrição:{product.description}</li>
-                            </div>
-                        )
-                    })}
-                </ul>
-            </div>
-        </>
-    )
+  return (
+    <>
+      <div>
+        <ul>
+          {products.map((product: ProductType) => {
+            let id = 1
+            id++
+            return (
+              <div key={id}>
+                <li>Produto:{product.productName}</li>
+                <li>Valor: R${product.price}</li>
+                <li>Em estoque:{product.quantity}</li>
+                <li>Descrição:{product.description}</li>
+              </div>
+            )
+          })}
+        </ul>
+      </div>
+    </>
+  )
 }
