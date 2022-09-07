@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
-import { getProducts } from '../components/Products/Products.services'
+import { getProducts } from '../components/Products/Products.service'
 import { ProductType } from '../types/product.type'
 
 export const ProductCard = () => {
