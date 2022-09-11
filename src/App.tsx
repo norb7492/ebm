@@ -5,11 +5,11 @@ import {
   Route,
 } from 'react-router-dom';
 
-import './App.css'
+import './app.css'
 import Header from './layout/header'
 import Footer from './layout/footer'
-import Dashboard from './components/Dashboard/Dashboard';
-import {Products} from './components/Products/Products';
+import Dashboard from './components/dashboard/dashboard';
+import Products from './components/products/products';
 
 function App() {
   return (
