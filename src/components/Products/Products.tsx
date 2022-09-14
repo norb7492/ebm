@@ -18,7 +18,7 @@ export default function Products() {
   useEffect(() => {
     const productSubscription = getProducts().subscribe((products) => setProducts(products))
     return () => productSubscription.unsubscribe()
-
+  }),[]
 
   return (
     <>
