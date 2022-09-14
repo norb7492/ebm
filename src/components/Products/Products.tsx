@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 export default function Products() {
   const [productID, setProductID] = useState('')
   const [productName, setProductName] = useState('')
+  const [productColor, setProductColor] = useState('')
   const [price, setPrice] = useState()
   const [quantity, setQuantity] = useState()
   const [description, setDescription] = useState('')
@@ -25,9 +26,11 @@ export default function Products() {
         {products.map((product: ProductType) => {
           return (
             <li><ProductCardItem
+              productID={product.productID}
               productName={product.productName}
               price={product.price}
               quantity={product.quantity}
+              color={product.productColor}
             />
 
             </li>

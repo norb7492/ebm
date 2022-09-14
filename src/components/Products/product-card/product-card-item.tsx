@@ -1,7 +1,10 @@
-function ProductCardItem(productID: string, productName: string, price: number,
-    quantity: number, productColor: string) {
-
-    return(
+function ProductCardItem(
+    productID: string,
+    productName: string,
+    price: number,
+    quantity: number,
+    productColor: string) {
+    return (
         <div>
             <div className='mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'>
                 <div key={productID} className='group relative'>

@@ -11,7 +11,7 @@ import Footer from './layout/footer'
 import Dashboard from './components/dashboard/dashboard';
 import Products from './components/products/products';
 
-function App() {
+function app() {
   return (
     <section className='flex-1'>
       <Header />
@@ -28,4 +28,4 @@ function App() {
   )
 }
 
-export default App
+export default app
