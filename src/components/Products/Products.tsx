@@ -1,3 +1,4 @@
+
 import SearchBar from '../../layout/search-bar.layout'
 import ProductCardItem from './product-card/product-card-item'
 import { getProducts } from './products.service'
@@ -17,10 +18,11 @@ export default function Products() {
   useEffect(() => {
     const productSubscription = getProducts().subscribe((products) => setProducts(products))
     return () => productSubscription.unsubscribe()
-  }, [])
+
 
   return (
     <>
+
       <SearchBar />
       <ul>
         {products.map((product: ProductType) => {

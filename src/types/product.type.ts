@@ -1,5 +1,5 @@
 export interface ProductType {
-  productColor: any
+  productColor: string
   productID:string
   description: string
   price: number
