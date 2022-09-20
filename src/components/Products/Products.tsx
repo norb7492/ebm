@@ -1,38 +1,45 @@
-import { useEffect, useState } from 'react'
+
+import SearchBar from '../../layout/search-bar.layout'
+import ProductCardItem from './product-card/product-card-item'
 import { getProducts } from './products.service'
 import { ProductType } from '../../types/product.type'
+import { useEffect, useState } from 'react'
 
-export const Products = () => {
+
+export default function Products() {
+  const [productID, setProductID] = useState('')
   const [productName, setProductName] = useState('')
+  const [productColor, setProductColor] = useState('')
   const [price, setPrice] = useState()
   const [quantity, setQuantity] = useState()
   const [description, setDescription] = useState('')
   const [products, setProducts] = useState<ProductType[]>([])
 
   useEffect(() => {
-    const productsSubscription = getProducts().subscribe((products) => setProducts(products))
-
-    return () => productsSubscription.unsubscribe()
-  }, [])
+    const productSubscription = getProducts().subscribe((products) => setProducts(products))
+    return () => productSubscription.unsubscribe()
+  }),[]
 
   return (
     <>
-      <div>
-        <ul>
-          {products.map((product: ProductType) => {
-            let id = 1
-            id++
-            return (
-              <div key={id}>
-                <li>Produto:{product.productName}</li>
-                <li>Valor: R${product.price}</li>
-                <li>Em estoque:{product.quantity}</li>
-                <li>Descrição:{product.description}</li>
-              </div>
-            )
-          })}
-        </ul>
-      </div>
+
+      <SearchBar />
+      <ul>
+        {products.map((product: ProductType) => {
+          return (
+            <li><ProductCardItem
+              productID={product.productID}
+              productName={product.productName}
+              price={product.price}
+              quantity={product.quantity}
+              color={product.productColor}
+            />
+
+            </li>
+          )
+        })
+        }
+      </ul>
     </>
   )
 }

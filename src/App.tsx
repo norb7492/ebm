@@ -1,13 +1,15 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-import './App.css'
+import './app.css'
 import Header from './layout/header'
 import Footer from './layout/footer'
-import Dashboard from './components/Dashboard/Dashboard'
-import { Products } from './components/Products/Products'
+import Dashboard from './components/dashboard/dashboard';
+import Products from './components/products/products';
 
-function App() {
+
+
+function app() {
   return (
     <section className='flex-1'>
       <Header />
@@ -23,4 +25,4 @@ function App() {
   )
 }
 
-export default App
+export default app
